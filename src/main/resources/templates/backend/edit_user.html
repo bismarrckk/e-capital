@@ -1,0 +1,102 @@
+ <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+ <head th:replace="backend/fragments :: header">
+  <body class="sb-nav-fixed">
+  	<nav th:replace="backend/fragments :: topnav"></nav>
+  	<div th:replace="backend/fragments :: sidenav"></div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        
+                        <ol class="breadcrumb mb-4" style="margin-top:1em">
+                            <li class="breadcrumb-item active">Edit User</li>
+                        </ol>
+                        <form th:action="@{/users/update}" method="Post" th:object="${user}">
+							<input type="hidden" th:field="*{id}">
+							
+								<div class="form-group">
+									<input type="text" class="form-control" th:field="*{firstName}"
+										placeholder="First Name" required readonly> <span
+										style="color: red; font-style: italic"
+										th:if="${#fields.hasErrors('firstName')}"
+										th:errors="*{firstName}"></span>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" th:field="*{lastName}"
+										placeholder="Last Name" required readonly> <span
+										style="color: red; font-style: italic"
+										th:if="${#fields.hasErrors('lastName')}"
+										th:errors="*{lastName}"></span>
+								</div>
+						
+						
+								<div class="form-group">
+									<input type="email" class="form-control" th:field="*{email}"
+										placeholder="Email Address" required readonly> <span
+										style="color: red; font-style: italic"
+										th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+								</div>
+								<div class="form-group">
+									<input type="number" class="form-control"
+										th:field="*{phoneNumber}" placeholder="Phone Number" required readonly>
+									<span style="color: red; font-style: italic"
+										th:if="${#fields.hasErrors('phoneNumber')}"
+										th:errors="*{phoneNumber}"></span>
+								</div>
+						
+							
+							<div class="form-group">
+
+								<input type="text" class="form-control"
+									th:field="*{physicalAddress}" placeholder="Physical Address"
+									required readonly> <span style="color: red; font-style: italic"
+									th:if="${#fields.hasErrors('physicalAddress')}"
+									th:errors="*{physicalAddress}"></span>
+
+							</div>
+						
+								<div class="form-group">
+							<label class="control-label" for="status">Update User
+								Status</label> <br><select th:field="*{enabled}" required  class="form-control1">
+								<option th:value="${user.enabled}">[[${user.enabled}]]</option>
+								<option value="true">Enable</option>
+								<option value="false">Disable</option>
+							</select>
+						</div>
+	
+						
+						<div class="form-group">
+						<label class="control-label" for="status">Update User
+								Roles</label><br>
+							<th:block th:each="role: ${roles}">
+								<input name="roles" type="checkbox" th:field="*{roles}"
+									th:text="${role.name}" th:value="${role.id}" class="m-2" />
+							</th:block>
+						</div>
+						
+
+							<div class="text-left">
+								<button type="submit" class="btn btn-primary btn-style mt-4">Update
+									Details</button>
+
+							</div>
+						</form>
+                        
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; E-Capital</div>
+                            
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script th:src="@{/backend/js/scripts.js}"></script>
+    </body>
+</html>

@@ -1,0 +1,83 @@
+<!Doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+  <head th:replace="frontend/fragments :: header1"></head>
+  <body>
+<!--header-->
+	<header th:replace="frontend/fragments :: header2"></header>
+<!--/header-->
+<!-- about breadcrumb -->
+<section class="w3l-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-5">
+        <div class="container pt-lg-5 pt-3 p-lg-4 pb-3">
+            <h2 class="title mt-5 pt-lg-5 pt-sm-3">Login</h2>
+            <ul class="breadcrumbs-custom-path pb-sm-5 pb-4 mt-2 text-center mb-md-5">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"> / Login </li>
+            </ul>
+        </div>
+    </div>
+    <div class="waveWrapper waveAnimation">
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none">
+            <path d="M-5.07,73.52 C149.99,150.00 299.66,-102.13 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none;"></path>
+        </svg>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+<!-- contact block -->
+<!-- contact1 -->
+<section class="w3l-contact-1 pb-5" id="contact">
+    <div class="contacts-9 py-lg-5 py-md-4">
+        <div class="container">
+            <div class="d-grid">
+                <div class="map-content-9">
+                    <h5 class="mb-sm-4 mb-3">Sign In</h5>
+                    <div th:if="${param.error}">
+				     	<div class="alert alert-danger">Incorrect username/password</div>
+				    </div>
+                     <form th:action="@{/login}" method="Post" >
+                        <div class="form-group">
+                           
+                            <input type="email" class="form-control" name="username" id="w3lSender" placeholder="Email Address"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" id="w3lSubject"
+                                placeholder="Password" required>
+                        </div>
+                       
+                        <div class="container">
+                        	<div class="row">
+	                        	<div class="col-md-2">
+	                            	<button type="submit" class="btn btn-primary btn-style mt-4">Login</button>
+	                            	 
+	                            </div>
+	                            <div class="col-md-10" style="margin-top:1.5em">
+		                            <span>Don't have an account? Click<a  th:href="@{/register}">
+							        here</a> to register</span><br>
+		                            <span>Forgot password? Click<a  th:href="@{/forgot-password}">
+						        here</a> to reset</span>
+						        </div>
+				        	</div>
+                        </div>
+                      
+                    </form>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /contact1 -->
+<!-- //contact block -->
+<!-- footer -->
+<section th:replace="frontend/fragments :: footer"></section>
+<!-- //footer -->
+
+<!-- Template JavaScript -->
+<section th:replace="frontend/fragments :: javascript"></section>
+
+
+</body>
+
+</html>

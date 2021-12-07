@@ -1,0 +1,142 @@
+<!Doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="frontend/fragments :: header1"></head>
+  <body>
+<!--header-->
+	<header th:replace="frontend/fragments :: header2"></header>
+<!--/header-->
+<!-- main-slider -->
+<section th:replace="frontend/fragments :: main_slider"></section>
+<!-- /main-slider -->
+<section class="w3l-features py-5" id="facilities">
+    <div class="call-w3 py-lg-5 py-md-4 py-2">
+        <h3 class="title-big text-center mb-sm-5 mb-4">About Us</h3>
+        <div class="container">
+            <div class="row main-cont-wthree-2">
+                <div class="col-lg-12 feature-grid-left">
+        
+                    <p class="text-para">Seed Capital is an online enabler for start-ups to access quick capital through a simplified technology- driven platform. 
+                    The Seed initiative was born in a realization of the challenges Startup businesses go through to access financing.
+                     Seed also borrows strongly from the realization that there are willing investors or donors willing to support these
+                      business but the link between these two parties barely exists. Web-based solutions present an agile platform for 
+                      businesses to cut down red tape associated with traditional systems and allow business access resources otherwise 
+                      unavailable due to its ubiquitous nature. Seed therefore affords such startups an opportunity to reach out to global 
+                      investor community to fund and expand their local businesses. See more on our company profile  </p>
+
+                    <a th:href="@{/about}" class="btn btn-primary btn-style mt-md-5 mt-4">Discover More</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+<section class="w3l-features py-5" id="facilities" th:fragment="latest_projects">
+    <div class="call-w3 py-lg-5 py-md-4 py-2">
+    	<h5 class="title-small text-center mb-1">Login to view more</h5>
+        <h3 class="title-big text-center mb-sm-5 mb-4">Latest Startup Projects</h3>
+        <div class="container">
+        
+            <div class="row main-cont-wthree-2">
+            
+                <div class="col-lg-12 feature-grid-right mt-lg-0 mt-5">
+                
+                    <div class="call-grids-w3 d-grid">
+                        <div class="grids-1 box-wrap" th:each="applications : ${applications}">
+                            <a th:href="@{/dashboard/details/{id}(id=${applications.id})}" class="icon"><span class="fa fa-certificate"></span></a>
+                            <h4><a th:href="@{/dashboard/details/{id}(id=${applications.id})}" class="title-head">[[${applications.sector}]]</a></h4>
+                            <p>[[${applications.commodity}]]</p>
+                             <p style="float:right"><a th:href="@{/dashboard/details/{id}(id=${applications.id})}">View More</a></p>
+                        </div>                      
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- testimonials -->
+<section class="w3l-testimonials" id="clients">
+    <!-- /grids -->
+    <div class="cusrtomer-layout py-5">
+        <div class="container py-lg-4 py-md-3 pb-lg-0">
+
+            <h5 class="title-small text-center mb-1">Testimonials</h5>
+            <h3 class="title-big text-center mb-sm-5 mb-4">Happy Clients & Feedbacks</h3>
+            <!-- /grids -->
+            <div class="testimonial-width">
+                <div id="owl-demo1" class="owl-two owl-carousel owl-theme">
+                    <div class="item">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+                                <blockquote>
+                                    <q>It's amazing to be on-board with e-capital as a young business owner just 
+                                    starting my adventure in trucking and logistics.
+                                     </q>
+                                </blockquote>
+                                <div class="testi-des">
+                                    
+                                    <div class="peopl align-self">
+                                        <h3>Newton Kipkirui</h3>
+                                        <p class="indentity">Businessman</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+                                <blockquote>
+                                    <q>My hotel is set to be 
+                                    opened in a month's time thanks to E-capital that linked me up with a wonderful investor
+                                    </q>
+                                </blockquote>
+                                <div class="testi-des">
+                                   
+                                    </div>
+                                    <div class="peopl align-self">
+                                        <h3>Tonny</h3>
+                                        <p class="indentity">Chef</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="item">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+                                <blockquote>
+                                    <q>I recommend e-capital not only because of its core mandate but also
+                                    its customer care services,they sort out issues in time kudos!</q>
+                                </blockquote>
+                                <div class="testi-des">
+                                    
+                                    </div>
+                                    <div class="peopl align-self">
+                                        <h3>Conte Metet</h3>
+                                        <p class="indentity">Engineer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /grids -->
+    </div>
+    <!-- //grids -->
+</section>
+<!-- //testimonials -->
+
+<!-- footer -->
+<section th:replace="frontend/fragments :: footer"></section>
+<!-- //footer -->
+
+<section th:replace="frontend/fragments :: javascript"></section>
+
+
+</body>
+
+</html>

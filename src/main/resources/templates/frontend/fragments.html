@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+ <head th:fragment="header1">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>E-Capital Sourcing</title>
+
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Template CSS -->
+    <link rel="stylesheet" th:href="@{/frontend/css/style-starter.css}">
+    
+  </head>
+<body>
+<header id="site-header" class="fixed-top" th:fragment="header2">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark stroke">
+      <h1>
+        <a class="navbar-brand" th:href="@{/}">
+          <span class="fa fa-diamond"></span>E-Capital <span class="logo">Grow your seed</span></a>
+      </h1>
+
+      <!-- if logo is image enable this   
+        <a class="navbar-brand" href="#index.html">
+            <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+        </a> -->
+      <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+        data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+    
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mx-lg-auto">
+          <li class="nav-item ">
+            <a class="nav-link" th:href="@{/}">Home </a>
+          </li>
+          <li class="nav-item @@about__active">
+            <a class="nav-link" th:href="@{/about}">Profile</a>
+          </li>
+          <li class="nav-item @@contact__active">
+            <a class="nav-link" th:href="@{/contact}">Contact</a>
+          </li>
+           <li class="nav-item @@contact__active">
+            <a class="nav-link" th:href="@{/register}">Register</a>
+          </li>
+        </ul>
+
+    
+      
+        <div class="top-quote mr-lg-2 text-center">
+          <a th:href="@{/login}" class="btn login mr-2"><span class="fa fa-user"></span> login</a>
+        </div>
+      </div>
+     
+    </nav>
+  </div>
+</header>
+<header class="fixed-top nav-fixed" th:fragment="header2_auth">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark stroke">
+      <h1>
+        <a class="navbar-brand" th:href="@{/dashboard}">
+          <span class="fa fa-diamond"></span>E-Capital <span class="logo">Grow your seed</span></a>
+      </h1>
+
+      <!-- if logo is image enable this   
+        <a class="navbar-brand" href="#index.html">
+            <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+        </a> -->
+      <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+        data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+    
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mx-lg-auto">
+          <li class="nav-item ">
+            <a class="nav-link" th:href="@{/dashboard}">Dashboard </a>
+          </li>
+          <li class="nav-item">
+           <div sec:authorize="hasAuthority('STARTUP')">
+            	<a class="nav-link" th:href="@{/applications}">My Startups</a>
+            </div>
+          </li>
+          
+          <li class="nav-item" >
+           <div sec:authorize="hasAuthority('INVESTOR')">
+            	<a class="nav-link" th:href="@{/investments}">My Investments</a>
+            </div>
+          </li>
+          
+          <li class="nav-item" >
+           <div sec:authorize="hasAnyAuthority('ADMIN','SUPER_USER')">
+             	<a class="nav-link" th:href="@{/admin}">Admin</a>
+            </div>
+          </li>
+          
+         
+        </ul>
+
+    
+      
+        <div class="top-quote mr-lg-2 text-center">
+          <a th:href="@{/dashboard/profile}" class="btn login mr-2"><span class="fa fa-user"></span> Profile</a>
+          <a th:href="@{/logout}" class="btn login mr-2"><span class="fa fa-sign-out"></span> Logout</a>
+        </div>
+      </div>
+     
+    </nav>
+  </div>
+</header>
+<section class="w3l-main-slider" id="home" th:fragment="main_slider">
+    <div class="companies20-content">
+        <div class="owl-one owl-carousel owl-theme">
+            <div class="item">
+                <li>
+                    <div class="slider-info banner-view bg bg2">
+                        <div class="banner-info">
+                            <div class="container">
+                                <div class="banner-info-bg">
+                                    <h5>E-Capital Sourcing </h5>
+                                    <p class="mt-4 pr-lg-4">Grow your seed with us</p>
+                                    <a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" th:href="@{/register}"> Ready to
+                                        get started?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </div>
+
+    <div class="waveWrapper waveAnimation">
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none">
+            <path d="M-5.07,73.52 C149.99,150.00 299.66,-102.13 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none;"></path>
+        </svg>
+    </div>
+</section>
+
+<section class="w3l-footer-29-main" th:fragment="footer">
+  <!-- copyright -->
+  <section class="w3l-copyright text-center">
+    <div class="container">
+      <p class="copy-footer-29">© 2021. All rights reserved. E-Capital</p>
+    </div>
+
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+      &#10548;
+    </button>
+    <script>
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction()
+      };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          document.getElementById("movetop").style.display = "block";
+        } else {
+          document.getElementById("movetop").style.display = "none";
+        }
+      }
+
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
+    <!-- /move top -->
+  </section>
+  <!-- //copyright -->
+</section>
+<section th:fragment="javascript">
+<!-- Template JavaScript -->
+<script th:src="@{/frontend/js/jquery-3.3.1.min.js}"></script>
+
+<!-- stats number counter-->
+<script th:src="@{/frontend/js/jquery.waypoints.min.js}"></script>
+<script th:src="@{/frontend/js/jquery.countup.js}"></script>
+<script>
+  $('.counter').countUp();
+</script>
+<!-- //stats number counter -->
+
+<script th:src="@{/frontend/js/owl.carousel.js}"></script>
+<!-- script for banner slider-->
+<script>
+  $(document).ready(function () {
+    $('.owl-one').owlCarousel({
+      loop: true,
+      margin: 0,
+      nav: false,
+      dots: false,
+      responsiveClass: true,
+      autoplay: true,
+      autoplayTimeout: 5000,
+      autoplaySpeed: 1000,
+      autoplayHoverPause: false,
+      responsive: {
+        0: {
+          items: 1
+        },
+        480: {
+          items: 1
+        },
+        667: {
+          items: 1
+        },
+        1000: {
+          items: 1,
+          nav: true
+        }
+      }
+    })
+  })
+</script>
+<!-- //script -->
+
+<!-- script for tesimonials carousel slider -->
+<script>
+  $(document).ready(function () {
+      $("#owl-demo1").owlCarousel({
+          loop: true,
+          margin: 20,
+          nav: false,
+          responsiveClass: true,
+          responsive: {
+              0: {
+                  items: 1,
+                  nav: false
+              },
+              768: {
+                  items: 2,
+                  nav: false
+              },
+              1000: {
+                  items: 3,
+                  nav: false,
+                  loop: false
+              }
+          }
+      })
+  })
+</script>
+<!-- //script for tesimonials carousel slider -->
+
+<!-- disable body scroll which navbar is in active -->
+<script>
+  $(function () {
+    $('.navbar-toggler').click(function () {
+      $('body').toggleClass('noscroll');
+    })
+  });
+</script>
+<!-- disable body scroll which navbar is in active -->
+
+<!--/MENU-JS-->
+<script>
+  $(window).on("scroll", function () {
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 80) {
+      $("#site-header").addClass("nav-fixed");
+    } else {
+      $("#site-header").removeClass("nav-fixed");
+    }
+  });
+
+  //Main navigation Active Class Add Remove
+  $(".navbar-toggler").on("click", function () {
+    $("header").toggleClass("active");
+  });
+  $(document).on("ready", function () {
+    if ($(window).width() > 991) {
+      $("header").removeClass("active");
+    }
+    $(window).on("resize", function () {
+      if ($(window).width() > 991) {
+        $("header").removeClass("active");
+      }
+    });
+  });
+</script>
+<!--//MENU-JS-->
+
+<script th:src="@{/frontend/js/bootstrap.min.js}"></script>
+<script th:src="@{/frontend/js/modal.js}"></script>
+</section>
+</body>
+</html>

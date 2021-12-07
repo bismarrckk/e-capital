@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="backend/fragments :: header">
+<body class="sb-nav-fixed">
+	<nav th:replace="backend/fragments :: topnav"></nav>
+	<div th:replace="backend/fragments :: sidenav"></div>
+	<div id="layoutSidenav_content">
+		<main>
+			<div class="container-fluid">
+
+				<ol class="breadcrumb mb-4" style="margin-top: 1em">
+					<li class="breadcrumb-item active">Investments</li>
+				</ol>
+				<div th:if="${message != null}">
+					<div class="alert alert-warning">[[${message}]]</div>
+				</div>
+				<table class="table table-responsive table-striped">
+					<thead class="thead-light">
+						<tr>
+							<th><a
+								th:href="@{'/investments/page/' + ${currentPage} + '?sortField=date&sortDir=' + ${reverseSortDir}}">Investment
+									Date</a></th>
+							<th>Sector</th>
+							<th>Commodity</th>
+							<th>Funding</th>
+							<th>Amount</th>
+							<th>Details</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="investment :${listInvestments}">
+							<td th:text="${investment.date}">
+							<td th:text="${investment.application.businessLine.sector}">
+							<td th:text="${investment.application.businessLine.commodity}">
+							<td th:text="${investment.application.type.name}">							
+							<td th:text="${investment.application.targetAmount}">
+							<td><a
+								th:href="@{/admin/details/{id}(id=${investment.application.id})}"
+								class="btn btn-sm  btn-info">view</a></td>
+						</tr>
+
+					</tbody>
+				</table>
+				<hr>
+				<div class="container" align="center">
+					<i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i>
+				</div>
+				<div class="container" align="center" th:if="${totalPages > 1}">
+					<i> Total Entries: [[${totalItems}]] </i>
+				</div>
+				<div>&nbsp;</div>
+				<div class="container" align="center" th:if="${totalPages > 1}">
+
+
+					<a th:if="${currentPage > 1}"
+						th:href="@{'/page/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
+					<span th:unless="${currentPage > 1}">First</span> &nbsp;&nbsp; <a
+						th:if="${currentPage > 1}"
+						th:href="@{'/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Previous</a>
+					<span th:unless="${currentPage > 1}">Previous</span> &nbsp;&nbsp;
+					<th:block th:if="${totalPages <= 5}">
+						<span th:each="i: ${#numbers.sequence(1, totalPages)}"> <a
+							th:if="${currentPage != i}"
+							th:href="@{'/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+							<span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp;
+						</span>
+					</th:block>
+					<th:block th:if="${totalPages>5}">
+						<th:block
+							th:if="${currentPage <= 5 || currentPage > totalPages - 4 }">
+							<span th:each="i: ${#numbers.sequence(1, 5)}"> <a
+								th:if="${currentPage != i}"
+								th:href="@{'/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+								<span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp;
+							</span>
+							<a th:if="${currentPage != i}"
+								th:href="@{'/page/' + 6 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">...</a>
+
+							<span
+								th:each="i: ${#numbers.sequence(totalPages - 4,totalPages)}">
+								<a th:if="${currentPage != i}"
+								th:href="@{'/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+								<span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp;
+							</span>
+						</th:block>
+						<th:block
+							th:if="${currentPage > 5 && currentPage < totalPages -4 }">
+							<a th:if="${currentPage != i}"
+								th:href="@{'/page/' + ${currentPage - 5} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">...</a>
+							<span
+								th:each="i: ${#numbers.sequence(currentPage - 4,currentPage + 4)}">
+								<a th:if="${currentPage != i}"
+								th:href="@{'/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+								<span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp;
+							</span>
+							<a th:if="${currentPage != i}"
+								th:href="@{'/page/' + ${currentPage + 5} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">...</a>
+						</th:block>
+					</th:block>
+
+
+					<a th:if="${currentPage < totalPages}"
+						th:href="@{'/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+					<span th:unless="${currentPage < totalPages}">Next</span>
+					&nbsp;&nbsp; <a th:if="${currentPage < totalPages}"
+						th:href="@{'/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+					<span th:unless="${currentPage < totalPages}">Last</span>
+				</div>
+
+			</div>
+		</main>
+		<footer class="py-4 bg-light mt-auto">
+			<div class="container-fluid">
+				<div class="d-flex align-items-center justify-content-between small">
+					<div class="text-muted">Copyright &copy; E-Capital</div>
+
+				</div>
+			</div>
+		</footer>
+	</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script th:src="@{/backend/js/scripts.js}"></script>
+</body>
+</html>

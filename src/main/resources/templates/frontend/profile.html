@@ -1,0 +1,135 @@
+<!Doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="frontend/fragments :: header1"></head>
+<body>
+	<!--header-->
+	<header th:replace="frontend/fragments :: header2_auth"></header>
+	<!--/header-->
+
+	<section class="w3l-features py-5" id="facilities"
+		th:fragment="latest_projects">
+		<div class="call-w3 py-lg-5 py-md-4 py-2">
+
+			<div class="container">
+
+				<div class="row main-cont-wthree-2">
+
+					<div class="col-lg-12 feature-grid-right mt-lg-0 mt-5">
+						<h4 style="margin-bottom:0.5em">
+							<b>Update Profile</b>
+						</h4>
+						<div th:if="${message}">
+								<div class="alert alert-info">[[${message}]]</div>
+							</div>
+						<div class="container"
+							style="background-color: #fff; padding-top: 1em; padding-bottom: 1em">
+						<div class="row">
+							<div class="col-md-9">
+								<form th:action="@{/dashboard/profile}" method="Post" th:object="${user}">
+								<input type="hidden" th:field="*{id}">
+                        <div class="twice-two">
+                        	<div class="form-group">
+                        		<h6><label>First Name</label></h6>
+	                            <input type="text" class="form-control" th:field="*{firstName}" 
+	                                required>
+	                            <span style="color:red;font-style:italic" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+                            </div>
+                            <div class="form-group">
+                            <h6><label>Last Name</label></h6>
+	                            <input type="text" class="form-control" th:field="*{lastName}"  required>
+	                            	<span style="color:red;font-style:italic" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+                            </div>
+                        </div>
+                         <div class="twice-two">
+                         	<div class="form-group">
+                         	<h6><label>Email Address</label></h6>
+	                            <input type="email" class="form-control" th:field="*{email}"
+	                                required readonly>
+	                                 <span style="color:red;font-style:italic" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+	                         </div>
+	                         <div class="form-group">
+	                         <h6><label>Phone Number</label></h6>
+                            	<input type="number" class="form-control" th:field="*{phoneNumber}" 
+                                required>
+                                 <span style="color:red;font-style:italic" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+                            </div>
+                        </div>
+                       
+                        <div class="twice-two">
+                       		<div class="form-group">
+                       		<h6><label>ID Type</label></h6>
+	                            <select class="form-control" th:field="*{idType}" required>
+	                            	<option value="">--ID Type--</option>
+		                           	<option value="National">National</option>
+		                           	<option value="Passport">Passport</option>
+		                           	<option value="Military">Military</option>
+	                            </select>
+                            </div>
+                            <div class="form-group">
+                            	<h6><label>ID Number</label></h6>
+	                            <input type="number" class="form-control" th:field="*{idNumber}" 
+	                                required>
+	                          		 <span style="color:red;font-style:italic" th:if="${#fields.hasErrors('idNumber')}" th:errors="*{idNumber}"></span>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <h6><label>Physical Address</label></h6>
+                                 <input type="text" class="form-control" th:field="*{physicalAddress}"  
+                                required>
+                                 	<span style="color:red;font-style:italic" th:if="${#fields.hasErrors('physicalAddress')}" th:errors="*{physicalAddress}"></span>
+                           
+                        </div>
+                        
+                        
+                        <div class="text-left">
+                            <button type="submit" class="btn btn-primary btn-style mt-4">Update</button>
+                            
+                        </div>
+                    </form>
+							</div>
+							<div class="col-md-3">
+							<form  th:action="@{/dashboard/changePassword}" method="post">
+							<div class="form-group">
+                        	<h6><label>Old Password</label></h6>
+	                            <input type="password" class="form-control" name="currentPwd"  required>	 
+                            </div>
+                        	<div class="form-group">
+                        	<h6><label>New Password</label></h6>
+	                            <input type="password" class="form-control" name="newPwd"  required>
+	                            	 
+                            </div>
+                            <div class="form-group">
+                            	<h6><label>Confirm Password</label></h6>
+	                            <input type="password" class="form-control" name="confirmPwd" required>
+	                           
+                            </div>
+                        	 <div class="text-left">
+                            <button type="submit" class="btn btn-primary btn-style mt-4">Submit</button>
+                            
+                        </div>
+                        </form>
+							</div>
+						</div>
+							
+							
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- testimonials -->
+
+
+	<!-- footer -->
+	
+	<!-- //footer -->
+
+	<section th:replace="frontend/fragments :: javascript"></section>
+
+
+</body>
+
+</html>

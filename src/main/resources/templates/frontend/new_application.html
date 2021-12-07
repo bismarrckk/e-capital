@@ -1,0 +1,86 @@
+<!Doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="frontend/fragments :: header1"></head>
+<body>
+	<!--header-->
+	<header th:replace="frontend/fragments :: header2_auth"></header>
+	<!--/header-->
+
+	<section class="w3l-features py-5" id="facilities"
+		th:fragment="latest_projects">
+		<div class="call-w3 py-lg-5 py-md-4 py-2">
+
+			<div class="container">
+
+				<div class="row main-cont-wthree-2">
+
+					<div class="col-lg-12 feature-grid-right mt-lg-0 mt-5">
+						<h4 style="margin-bottom:0.5em">
+							<b>Fund Application</b>
+						</h4>
+						<div class="container"
+							style="background-color: #fff; padding-top: 1em; padding-bottom: 1em">
+
+							<form th:action="@{/applications/save}" method="post"
+								th:object="${application}">
+								<input type="hidden" th:field="*{id}">
+						
+								<div class="row">
+
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Type of Funding</label> <select class="form-control"
+												name="type"  required>
+												<option value="">--Select--</option>
+												<option th:each="type : ${types}" th:value="${type.id}"
+													th:text="${type.name}"></option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Target Amount</label> <input type="number"
+												class="form-control" th:field="*{targetAmount}"> <span
+												style="color: red; font-style: italic"
+												th:if="${#fields.hasErrors('targetAmount')}"
+												th:errors="*{targetAmount}"></span>
+										</div>
+										
+									<input type="hidden" name="businessLine" th:value="${line}"> 
+									</div>
+									
+
+								</div>
+								<div class="form-group">
+										<label>Description of the Funding Nature</label><br>
+										<textarea class="form-control" th:field="*{description}"></textarea>
+										<span style="color: red; font-style: italic"
+											th:if="${#fields.hasErrors('description')}"
+											th:errors="*{description}"> </span>
+									</div>
+								<div class="text-left">
+									<button type="submit" class="btn btn-primary btn-style mt-4">Submit</button>
+
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- testimonials -->
+
+
+	<!-- footer -->
+	
+	<!-- //footer -->
+
+	<section th:replace="frontend/fragments :: javascript"></section>
+
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!Doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="frontend/fragments :: header1"></head>
+<body>
+	<!--header-->
+	<header th:replace="frontend/fragments :: header2_auth"></header>
+	<!--/header-->
+
+	<section class="w3l-features py-5" id="facilities"
+		th:fragment="latest_projects">
+		<div class="call-w3 py-lg-5 py-md-4 py-2">
+
+			<div class="container">
+
+				<div class="row main-cont-wthree-2">
+
+					<div class="col-lg-12 feature-grid-right mt-lg-0 mt-5">
+						<h4 style="margin-bottom:0.5em">
+							<b>New Business Line </b>
+						</h4>
+						<div class="container"
+							style="background-color: #fff; padding-top: 1em; padding-bottom: 1em">
+							 <div th:if="${message}">
+					     		<div class="alert alert-info">[[${message}]]</div>
+					 		</div>
+							<form th:action="@{/businessLine/save}" method="post" th:object="${line}">
+								<div class="row">
+									<input type="hidden" th:field="*{id}">
+									<div class="col-md-6">
+										<input type="hidden" name="entity_id" th:value="${entity}" />
+										<div class="form-group">
+											<label>Business Sector</label> <input type="text"
+												class="form-control" th:field="*{sector}"> <span
+												style="color: red; font-style: italic"
+												th:if="${#fields.hasErrors('sector')}"
+												th:errors="*{sector}"></span>
+										</div>
+										<div class="form-group">
+											<label>Commodity</label> <input type="text"
+												class="form-control" th:field="*{commodity}">
+											<span style="color: red; font-style: italic"
+												th:if="${#fields.hasErrors('commodity')}"
+												th:errors="*{commodity}"></span>
+										</div>
+										
+
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Start Date</label> <input type="date"
+												class="form-control" th:field="*{startDate}" required> <span
+												style="color: red; font-style: italic"
+												th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></span>
+										</div>
+										<div class="form-group">
+											<label>Employee Count</label> <input type="number"
+												class="form-control" th:field="*{employeeCount}"> <span
+												style="color: red; font-style: italic"
+												th:if="${#fields.hasErrors('employeeCount')}" th:errors="*{employeeCount}"></span>
+										</div>
+										
+									</div>
+								</div>
+								<div class="form-group">
+		                            <label>Description</label><br>
+		                            <textarea  class="form-control" th:field="*{description}" ></textarea>
+		                            <span style="color: red; font-style: italic"
+										th:if="${#fields.hasErrors('description')}" th:errors="*{description}">
+									</span>
+		                        </div>
+								<div class="text-left">
+									<button type="submit" class="btn btn-primary btn-style mt-4">Submit</button>
+
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- testimonials -->
+
+
+	<!-- footer -->
+	
+	<!-- //footer -->
+
+	<section th:replace="frontend/fragments :: javascript"></section>
+
+
+</body>
+
+</html>

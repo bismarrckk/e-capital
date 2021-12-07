@@ -1,0 +1,163 @@
+<!Doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="frontend/fragments :: header1"></head>
+  <body>
+<!--header-->
+	<header th:replace="frontend/fragments :: header2"></header>
+<!--/header-->
+<!-- about breadcrumb -->
+<section class="w3l-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-5">
+        <div class="container pt-lg-5 pt-3 p-lg-4 pb-3">
+            <h2 class="title mt-5 pt-lg-5 pt-sm-3">Company Profile</h2>
+            <ul class="breadcrumbs-custom-path pb-sm-5 pb-4 mt-2 text-center mb-5">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"> / Profile </li>
+            </ul>
+        </div>
+    </div>
+    <div class="waveWrapper waveAnimation">
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none">
+            <path d="M-5.07,73.52 C149.99,150.00 299.66,-102.13 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none;"></path>
+        </svg>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+<section id="about" class="home-services pt-lg-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="box-wrap">
+                    <div class="box-wrap-grid">
+                        <div class="icon">
+                            <span class="fa fa-bullseye"></span>
+                        </div>
+                        <div class="info">
+                            <p>Our</p>
+                            <h4><a href="">Mission</a></h4>
+                        </div>
+                    </div>
+                    <p class="mt-4">To create an adaptive platform that dynamically seeks to address the evolving
+                     challenges associated with capital sourcing for start-up fund seekers and marginalized
+                      transformationalists through the use of technology
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-md-0 mt-4">
+                <div class="box-wrap" style="padding-bottom:6em">
+                    <div class="box-wrap-grid">
+                        <div class="icon">
+                            <span class="fa fa-eye"></span>
+                        </div>
+                        <div class="info">
+                            <p>Our</p>
+                            <h4><a href="">Vision</a></h4>
+                        </div>
+                    </div>
+                    <p class="mt-4">To be the leader e-capital sourcing 
+                    platform in Africa serving access to capital businesses and
+                     fund seekers across all social-economic sectors
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-lg-0 mt-4">
+                <div class="box-wrap">
+                    <div class="box-wrap-grid">
+                        <div class="icon">
+                            <span class="fa fa-superpowers"></span>
+                        </div>
+                        <div class="info">
+                            <p>Our</p>
+                            <h4><a href="#url">Core Values</a></h4>
+                        </div>
+                    </div>
+                    <p class="mt-4">
+	                    <ul>
+		                    <li>(i)Simplicity: to provide simplified solutions to fund seekers and investors</li>
+							<li>(ii)Adaptiveness: to proactively adapt to the changing economic
+							 environments in providing our solutions.
+							 </li>
+							<li>(iii)Social consciousness: to always be driven by the desire to better the 
+							lives of those that impacted by our activities 
+							</li>
+	                    </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="w3l-aboutblock1 py-5" id="about">
+    <div class="container py-lg-5 py-md-4 py-2">
+     <h3 class="title-big mx-0" align="center">How it works</h3><br>
+        <div class="row">
+            <div class="col-lg-6">
+                <span class="title-small mb-2">INVEST BY US WITH US</span>
+                <p class="mt-lg-4 mt-3">Seed provides you with an array
+					of investment opportunities from across Kenya. We aim to bring all
+					the best startups with potentially disruptive ideas as well
+					packaging and presenting the old school "safe" investment options
+					all in one destination, all these without hardly making you leave
+					your desk or device. Browse through our approved projects and be
+					the first to invest and grow your value. Behind the dashboards,
+					our sophisticated analytical solutions ensure that we present all
+					information you need to make an investment decision. Before we
+					bring our projects, our team ensures that all projects are vetted
+					to minimize risk related to misrepresentation and bring them as
+					close to nil as is humanly possible. Our platform also creates a
+					perfect platform aiming to support small start-ups in informal
+					set-ups with their much needed capital. You can partner with us
+					and be part of a transformation as profit seeking or a non-profit
+					seeking entity. Seed provides the flexibility of providing
+					differentiated offering for all groups, seekers and grantors!
+					Click <a th:href="@{/register}">here</a> to sign-up and access all trending projects and take
+					your fund to the next level!!
+				</p>
+            </div>
+            <div class="col-lg-6 ">
+                
+				 <span class="title-small mb-2">LAUNCH A SEED BID</span>
+                	<p class="mt-lg-4 mt-3">
+						  Do you have a
+						great business idea you are passionate about but do not know how
+						to access funding? Do you have brilliant idea but have no idea on
+						how to turn it into a business? Have you sought for financing to
+						start or expanding for your young business but are limited by the
+						bureaucratic pre-qualification and officialdom procedures that is
+						financing institutions? Do you have an initiative you want to
+						crowdsource for? Are you looking an able partner to take your
+						start-up to the next level? Do you get stuck at documenting for
+						your business to access funding? Do you lack the credit history
+						that other financiers demand of you to just consider financing? If
+						you answer yes to any of the questions above, then you are at the
+						right place. Seed is here to address these very common headaches
+						start-up entrepreneurs harrowingly go through every time they try
+						to seek out financing. Here at seed we have a community of
+						investors and supporters willing to lay their trust in your dream.
+						We will guide you on how to build a portfolio that sells and link
+						you to a global investor community. We take you out of the close
+						family that has always backed you and embrace you in our global
+						family of go-getters! Sign up here and set-up a project and get
+						your business rolling!
+						</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- stats -->
+
+<!-- //stats -->
+
+<!-- footer -->
+<section th:replace="frontend/fragments :: footer"></section>
+<!-- //footer -->
+
+<!-- Template JavaScript -->
+<section th:replace="frontend/fragments :: javascript"></section>
+
+
+</body>
+
+</html>

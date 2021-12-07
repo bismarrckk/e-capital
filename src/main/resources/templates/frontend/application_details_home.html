@@ -1,0 +1,190 @@
+<!Doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="frontend/fragments :: header1"></head>
+<body>
+	<!--header-->
+	<header th:replace="frontend/fragments :: header2_auth"></header>
+	<!--/header-->
+
+	<section class="w3l-features py-5" id="facilities"
+		th:fragment="latest_projects">
+		<div class="call-w3 py-lg-5 py-md-4 py-2">
+
+			<div class="container">
+
+				<div class="row main-cont-wthree-2">
+
+					<div class="col-lg-12 feature-grid-right mt-lg-0 mt-5">
+						<h4 style="margin-bottom: 0.5em">
+							<b>Startup Details</b>
+						</h4>
+						<div class="container"style="background-color: #fff; padding-top: 1em; padding-bottom: 1em" th:each="applications:${applicationDetails}">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="btn-group" role="group" aria-label="Basic example"
+										style="margin-bottom: 0.5em">
+										
+										<button style="color: #fff; margin: 0 1px; border-radius: 0;"
+											class="btn btn-primary btn-sm active" onclick="openFile('line')">
+											<i class="fa fa-building-o"></i> Business Line
+										</button>
+										<button style="color: #fff; margin: 0 1px; border-radius: 0;"
+											class="btn btn-primary btn-sm"
+											onclick="openFile('appDetails')">
+											<i class="fa fa-money"></i> Fund Application
+										</button>
+									</div>
+								</div>
+								<div class="col-md-6" sec:authorize="hasAuthority('INVESTOR')"> 
+									<form method="post" th:action="@{/investments/save}">
+										<input type="hidden" name="id" th:value="*{applications.id}">
+										<div class="btn-group" role="group" aria-label="Basic example"
+											style="margin-bottom: 0.5em;float:right">
+											<button type="submit" name="invest" value="true"
+												class="btn btn-info mb-2 btn-sm">
+												<i class="fa fa-check"></i> Invest
+											</button>
+											
+										</div>
+									</form>
+								</div>
+							</div>
+							
+							
+							<div id="line" class="file">
+								<h5><b>Business Line Details</b></h5>
+								<hr>
+								  <div class="row">
+									<div class="col-md-6">
+								 		<b>Business Sector</b> 
+								 	</div>
+								 	<div class="col-md-6">
+								 		<span style="float:left">[[${applications.businessLine.sector}]]</span>
+								 	</div>
+								 </div>
+		                		 <hr>
+		                		  <div class="row">
+									<div class="col-md-6">
+								 		<b>Business Commodity</b> 
+								 	</div>
+								 	<div class="col-md-6">
+								 		<span style="float:left">[[${applications.businessLine.commodity}]]</span>
+								 	</div>
+								 </div>
+		                		 <hr>
+		                		 <div class="row">
+									<div class="col-md-6">
+								 		<b>Start Date</b> 
+								 	</div>
+								 	<div class="col-md-6">
+								 		<span style="float:left">[[${applications.businessLine.startDate}]]</span>
+								 	</div>
+								 </div>
+		                		 <hr>
+		                		  <div class="row">
+									<div class="col-md-6">
+								 		<b>Employee Count</b> 
+								 	</div>
+								 	<div class="col-md-6">
+								 		<span style="float:left">[[${applications.businessLine.employeeCount}]]</span>
+								 	</div>
+								 </div>
+		                		 <hr>
+		                		  <div class="row">
+									<div class="col-md-6">
+								 		<b>Business Description</b> 
+								 	</div>
+								 	<div class="col-md-6">
+								 		<span style="float:left">[[${applications.businessLine.description}]]</span>
+								 	</div>
+								 </div>
+		                		 
+
+							</div>
+							<div id="appDetails" class="file" style="display: none">
+								<h5><b>Funding Application</b></h5>
+								<hr>
+								  <div class="row">
+									<div class="col-md-6">
+								 		<b>Funding Type</b> 
+								 	</div>
+								 	<div class="col-md-6">
+								 		<span style="float:left">[[${applications.type.name}]]</span>
+								 	</div>
+								 </div>
+		                		 <hr>
+		                		 <div class="row">
+									<div class="col-md-6">
+								 		<b>Approval Phase</b> 
+								 	</div>
+								 	<div class="col-md-6">
+								 		<span style="float:left">[[${applications.applicationPhase.name}]]</span>
+								 	</div>
+								 </div>
+		                		 <hr>
+		                		 <div class="row">
+									<div class="col-md-6">
+								 		<b>Application Date</b> 
+								 	</div>
+								 	<div class="col-md-6">
+								 		<span style="float:left">[[${applications.applicationDate}]]</span>
+								 	</div>
+								 </div>
+		                		 <hr>
+		                		 <div class="row">
+									<div class="col-md-6">
+								 		<b>Target Amount</b> 
+								 	</div>
+								 	<div class="col-md-6">
+								 		<span style="float:left">[[${applications.targetAmount}]]</span>
+								 	</div>
+								 </div>
+		                		 <hr>
+		                		 <div class="row">
+									<div class="col-md-6">
+								 		<b>Funding Type Description</b> 
+								 	</div>
+								 	<div class="col-md-6">
+								 		<span style="float:left">[[${applications.description}]]</span>
+								 	</div>
+								 </div>
+		                		 
+
+							</div>
+
+						
+							
+
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- testimonials -->
+
+
+	<!-- footer -->
+
+	<!-- //footer -->
+
+	<section th:replace="frontend/fragments :: javascript"></section>
+	<!-- Tabs java script files here -->
+<script>
+function openFile(fileName) {
+  var i;
+  var x = document.getElementsByClassName("file");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  document.getElementById(fileName).style.display = "block";  
+}
+</script>
+<!--  tabs -->
+
+</body>
+
+</html>
