@@ -66,7 +66,7 @@ public class PatentController {
 			attributes.addFlashAttribute("message", "Please choose a pdf file");
 			return "redirect:/patents/edit/"+businesslineId;
 		
-		}				
+		}
 		String fileName = StringUtils.cleanPath(pdfFile.getOriginalFilename());
 		String cleanFileName=fileName.replaceAll("[^a-zA-Z0-9.-]", "_");
 		long lineId=Long.parseLong(request.getParameter("businessLine"));
@@ -81,13 +81,12 @@ public class PatentController {
 		} catch (IOException e) {
 			attributes.addFlashAttribute("message", e);
 			if(patentId<1) {
-				attributes.addFlashAttribute("message",e );
+				return "frontend/patent";
 			}else {
-				attributes.addFlashAttribute("message",e );
+				return "redirect:/patents/edit/"+businesslineId;
 			}
 		}
-		String uploadPath=uploadDir+cleanFileName;
-		patentDto.setImage(uploadPath);
+		patentDto.setImage(cleanFileName);
 		Patent patent=mapper.map(patentDto, Patent.class);
 		patentService.save(patent);
 		if(patentId<1) {

@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService{
 		String toAddress = user.getEmail();
 	    String fromAddress = "b77kibet@gmail.com";
 	    String senderName = "E-Capital";
-	    String subject = "Please verify your account";
+	    String subject = "Account verification";
 	    String content = "Dear [[name]],<br>"
 	            + "Thankyou for registering with us,Please click the link below to verify your account:<br>"
 	            + "<h3><a href=\"[[URL]]\" target=\"_self\">VERIFY</a></h3>"
